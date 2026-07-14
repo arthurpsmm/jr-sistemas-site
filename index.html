@@ -74,42 +74,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(5,7,15,0.85)
 .mobile-nav .lang-switch button{font-size:15px;padding:8px 14px}
 
 /* HERO */
-.hero{padding:10rem 2rem 6rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 0%,rgba(59,130,255,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 10% 30%,rgba(20,85,216,0.10) 0%,transparent 60%),var(--navy)}
+.hero{padding:10rem 2rem 7.5rem;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 70% 0%,rgba(59,130,255,0.18) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 10% 30%,rgba(20,85,216,0.10) 0%,transparent 60%),var(--navy)}
 .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 50% 20%,black 0%,transparent 75%)}
-.hero-inner{max-width:1320px;margin:0 auto;position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 0.85fr;gap:3.5rem;align-items:center}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:2;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(59,130,255,0.1);border:1px solid rgba(59,130,255,0.3);color:#9cc2ff;font-size:14px;font-weight:500;padding:9px 18px;border-radius:100px;margin-bottom:2rem}
 .hero-badge i{color:var(--blue-bright)}
-.hero h1{font-size:clamp(46px,6.5vw,76px);font-weight:800;color:#fff;line-height:1.04;margin-bottom:1.5rem;letter-spacing:-0.025em}
+.hero h1{font-size:clamp(48px,7vw,80px);font-weight:800;color:#fff;line-height:1.04;margin-bottom:1.75rem;letter-spacing:-0.025em}
 .hero h1 .grad{background:linear-gradient(120deg,var(--blue-bright) 10%,#cfe0ff 60%,#ffffff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:19px;color:var(--text2);line-height:1.65;margin-bottom:2.5rem;max-width:520px;font-weight:400}
-.hero-btns{display:flex;gap:1.1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-sub{font-size:21px;color:var(--text2);line-height:1.65;margin:0 auto 2.75rem;max-width:680px;font-weight:400}
+.hero-btns{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem}
 .btn-primary{display:inline-flex;align-items:center;gap:11px;background:var(--wa);color:#fff;padding:18px 32px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:all 0.25s;box-shadow:0 12px 32px -6px rgba(37,211,102,0.4)}
 .btn-primary:hover{background:#1fb858;transform:translateY(-3px);box-shadow:0 16px 40px -6px rgba(37,211,102,0.55)}
 .btn-primary svg{width:21px;height:21px}
 .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid var(--border2);color:#fff;padding:18px 28px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;transition:all 0.25s}
 .btn-secondary:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3)}
-.hero-stats{display:flex;gap:3rem}
+.hero-stats{display:flex;gap:4rem;justify-content:center}
 .hero-stat-num{font-size:38px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.02em}
 .hero-stat-label{font-size:14px;color:var(--text3);margin-top:6px;font-weight:500}
 
-.hero-visual{position:relative}
-.mockup-glow{position:absolute;inset:-40px;background:radial-gradient(circle,rgba(59,130,255,0.2) 0%,transparent 70%);filter:blur(20px)}
-.mockup-card{background:var(--surface);border:1px solid var(--border2);border-radius:20px;box-shadow:0 40px 80px -20px rgba(0,0,0,0.6);overflow:hidden;position:relative;z-index:2}
-.mockup-bar{background:rgba(255,255,255,0.03);padding:12px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
-.mockup-dot{width:9px;height:9px;border-radius:50%}
-.mockup-body{padding:1.5rem}
-.mockup-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px}
-.mockup-row:last-child{border-bottom:none}
-.mockup-label{color:var(--text2)}
-.mockup-value{font-weight:700;color:#fff}
-.mockup-total{background:linear-gradient(135deg,var(--blue-bright) 0%,var(--blue-dark) 100%);border-radius:12px;padding:16px 18px;margin-top:14px;display:flex;justify-content:space-between;align-items:center}
-.mockup-total-label{font-size:12px;color:rgba(255,255,255,0.75)}
-.mockup-total-value{font-size:24px;font-weight:800;color:#fff}
-.float-badge{position:absolute;background:var(--surface2);border:1px solid var(--border2);border-radius:14px;padding:14px 18px;box-shadow:0 20px 40px -10px rgba(0,0,0,0.5);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#fff;z-index:3;animation:floatY 4s ease-in-out infinite}
-.float-badge i{font-size:20px}
-.float-badge-1{top:-24px;right:-30px;animation-delay:0s}
-.float-badge-2{bottom:20px;left:-40px;animation-delay:1.5s}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
 /* PROOF STRIP */
 .proof-strip{background:var(--navy2);padding:3rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -211,8 +193,6 @@ footer{background:var(--navy2);color:var(--text3);padding:5rem 2rem 2.5rem;borde
 
 /* MOBILE RESPONSIVE */
 @media(max-width:980px){
-  .hero-inner{grid-template-columns:1fr}
-  .hero-visual{display:none}
   .why-grid{grid-template-columns:1fr}
   .product-row,.product-row.reverse{grid-template-columns:1fr;direction:ltr;gap:2.5rem}
   .product-visual{order:-1;min-height:240px}
@@ -361,34 +341,6 @@ footer{background:var(--navy2);color:var(--text3);padding:5rem 2rem 2.5rem;borde
       </div>
     </div>
 
-    <div class="hero-visual reveal-scale in">
-      <div class="mockup-glow"></div>
-      <div class="float-badge float-badge-1">
-        <i class="ti ti-circle-check" style="color:var(--green)"></i>
-        <span data-i18n="hero.nfeBadge">NF-e emitida</span>
-      </div>
-      <div class="mockup-card">
-        <div class="mockup-bar">
-          <div class="mockup-dot" style="background:#ff5f57"></div>
-          <div class="mockup-dot" style="background:#febc2e"></div>
-          <div class="mockup-dot" style="background:#28c840"></div>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-row"><span class="mockup-label" data-i18n="mockup.item1">Pizza Margherita G</span><span class="mockup-value">R$ 48,00</span></div>
-          <div class="mockup-row"><span class="mockup-label" data-i18n="mockup.item2">Refrigerante 2L</span><span class="mockup-value">R$ 12,00</span></div>
-          <div class="mockup-row"><span class="mockup-label" data-i18n="mockup.item3">Borda recheada</span><span class="mockup-value">R$ 8,00</span></div>
-          <div class="mockup-row"><span class="mockup-label" data-i18n="mockup.item4">Taxa de entrega</span><span class="mockup-value">R$ 6,00</span></div>
-          <div class="mockup-total">
-            <div><div class="mockup-total-label" data-i18n="mockup.total">Total do pedido</div><div class="mockup-total-value">R$ 74,00</div></div>
-            <i class="ti ti-receipt" style="font-size:30px;color:#fff"></i>
-          </div>
-        </div>
-      </div>
-      <div class="float-badge float-badge-2">
-        <i class="ti ti-brand-whatsapp" style="color:var(--wa)"></i>
-        <span data-i18n="hero.waBadge">Pedido via iFood sincronizado</span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -977,9 +929,8 @@ const I18N = {
     'hero.badge':'Atendendo Itapema, Balneário Camboriú, Itajaí e região',
     'hero.title':'O sistema completo para <span class="grad">automatizar</span> o seu comércio',
     'hero.sub':'PDV, nota fiscal, controle de estoque e gestão financeira em um só lugar — com integração direta com iFood, Stone, bancos e marketplaces.',
-    'hero.ctaPrimary':'Solicitar demonstração','hero.ctaSecondary':'Ver todos os produtos','hero.nfeBadge':'NF-e emitida','hero.waBadge':'Pedido via iFood sincronizado',
+    'hero.ctaPrimary':'Solicitar demonstração','hero.ctaSecondary':'Ver todos os produtos',
     'stat.pdvs':'Pontos de venda ativos','stat.estados':'Estados atendidos','stat.anos':'Anos de mercado',
-    'mockup.item1':'Pizza Margherita G','mockup.item2':'Refrigerante 2L','mockup.item3':'Borda recheada','mockup.item4':'Taxa de entrega','mockup.total':'Total do pedido',
     'proof.pdvs':'PDVs instalados','proof.integracoes':'Integrações ativas',
     'empresa.eyebrow':'Empresa','empresa.title':'Automação comercial<br>com propósito',
     'empresa.desc':'A automação, através de software, deixou de ser somente sinônimo de modernização ou agilidade no atendimento — hoje é indispensável para o bom desenvolvimento de qualquer negócio.',
@@ -1031,9 +982,8 @@ const I18N = {
     'hero.badge':'Serving Itapema, Balneário Camboriú, Itajaí and the region',
     'hero.title':'The complete system to <span class="grad">automate</span> your business',
     'hero.sub':'POS, invoicing, inventory control and financial management in one place — with direct integration with iFood, Stone, banks and marketplaces.',
-    'hero.ctaPrimary':'Request a demo','hero.ctaSecondary':'See all products','hero.nfeBadge':'Invoice issued','hero.waBadge':'Order synced via iFood',
+    'hero.ctaPrimary':'Request a demo','hero.ctaSecondary':'See all products',
     'stat.pdvs':'Active points of sale','stat.estados':'States served','stat.anos':'Years in the market',
-    'mockup.item1':'Margherita Pizza L','mockup.item2':'Soda 2L','mockup.item3':'Stuffed crust','mockup.item4':'Delivery fee','mockup.total':'Order total',
     'proof.pdvs':'POS installed','proof.integracoes':'Active integrations',
     'empresa.eyebrow':'Company','empresa.title':'Business automation<br>with purpose',
     'empresa.desc':"Software-driven automation is no longer just a synonym for modernization or faster service — today it's essential for the healthy growth of any business.",
@@ -1085,9 +1035,8 @@ const I18N = {
     'hero.badge':'Atendiendo Itapema, Balneário Camboriú, Itajaí y la región',
     'hero.title':'El sistema completo para <span class="grad">automatizar</span> tu negocio',
     'hero.sub':'TPV, facturación, control de inventario y gestión financiera en un solo lugar — con integración directa con iFood, Stone, bancos y marketplaces.',
-    'hero.ctaPrimary':'Solicitar demostración','hero.ctaSecondary':'Ver todos los productos','hero.nfeBadge':'Factura emitida','hero.waBadge':'Pedido sincronizado vía iFood',
+    'hero.ctaPrimary':'Solicitar demostración','hero.ctaSecondary':'Ver todos los productos',
     'stat.pdvs':'Puntos de venta activos','stat.estados':'Estados atendidos','stat.anos':'Años en el mercado',
-    'mockup.item1':'Pizza Margherita G','mockup.item2':'Refresco 2L','mockup.item3':'Borde relleno','mockup.item4':'Costo de envío','mockup.total':'Total del pedido',
     'proof.pdvs':'TPV instalados','proof.integracoes':'Integraciones activas',
     'empresa.eyebrow':'Empresa','empresa.title':'Automatización comercial<br>con propósito',
     'empresa.desc':'La automatización mediante software dejó de ser solo sinónimo de modernización o agilidad en la atención — hoy es indispensable para el buen desarrollo de cualquier negocio.',
