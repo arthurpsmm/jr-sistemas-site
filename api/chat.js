@@ -87,7 +87,7 @@ module.exports = async function handler(req, res) {
     if (!anthropicRes.ok) {
       const errText = await anthropicRes.text();
       console.error('Anthropic API error:', anthropicRes.status, errText);
-      res.status(502).json({ error: 'Falha ao consultar o assistente' });
+      res.status(502).json({ error: 'Falha ao consultar o assistente', debug: errText, status: anthropicRes.status, keyPresent: Boolean(process.env.ANTHROPIC_API_KEY), keyLength: (process.env.ANTHROPIC_API_KEY || '').length });
       return;
     }
 
