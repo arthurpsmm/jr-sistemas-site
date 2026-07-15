@@ -184,6 +184,41 @@ footer{background:var(--navy2);color:var(--text3);padding:5rem 2rem 2.5rem;borde
 .sticky-wa:hover{transform:translateY(-4px)}
 .sticky-wa svg{width:22px;height:22px}
 
+/* CHAT WIDGET */
+.chat-toggle{position:fixed;bottom:6.75rem;right:2rem;z-index:401;width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 16px 40px -8px rgba(59,130,255,0.55);transition:transform 0.25s}
+.chat-toggle:hover{transform:translateY(-4px)}
+.chat-toggle svg{width:26px;height:26px}
+.chat-toggle .ic-close{display:none}
+.chat-toggle.open .ic-chat{display:none}
+.chat-toggle.open .ic-close{display:block}
+.chat-panel{position:fixed;bottom:11.25rem;right:2rem;z-index:401;width:360px;max-width:calc(100vw - 2rem);height:min(520px,70vh);background:var(--surface);border:1px solid var(--border2);border-radius:16px;box-shadow:0 24px 60px -12px rgba(0,0,0,0.55);display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(12px);transition:all 0.25s}
+.chat-panel.open{opacity:1;visibility:visible;transform:translateY(0)}
+.chat-head{background:var(--navy2);padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.chat-head-dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex-shrink:0}
+.chat-head-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#fff}
+.chat-head-sub{font-size:12px;color:var(--text3)}
+.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.chat-msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5}
+.chat-msg.bot{align-self:flex-start;background:var(--surface2);color:var(--text)}
+.chat-msg.user{align-self:flex-end;background:var(--blue);color:#fff}
+.chat-msg.typing{display:flex;gap:4px;align-items:center;padding:14px}
+.chat-msg.typing span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:chatDot 1.2s infinite ease-in-out}
+.chat-msg.typing span:nth-child(2){animation-delay:0.2s}
+.chat-msg.typing span:nth-child(3){animation-delay:0.4s}
+@keyframes chatDot{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chat-input-row input{flex:1;background:var(--navy3);border:1px solid var(--border2);border-radius:10px;padding:10px 12px;color:var(--text);font-size:14px;font-family:inherit}
+.chat-input-row input:focus{outline:none;border-color:var(--blue)}
+.chat-input-row button{background:var(--blue);border:none;border-radius:10px;width:40px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-input-row button:disabled{opacity:0.5;cursor:not-allowed}
+.chat-handoff{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;margin:0 12px 12px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);border-radius:10px;color:var(--wa);font-size:13px;font-weight:700;text-decoration:none;transition:background 0.2s}
+.chat-handoff:hover{background:rgba(37,211,102,0.2)}
+.chat-handoff svg{width:16px;height:16px;flex-shrink:0}
+@media (max-width:480px){
+  .chat-toggle{bottom:6.5rem;right:1rem}
+  .chat-panel{bottom:11rem;right:1rem}
+}
+
 /* MOBILE NAV */
 .mobile-nav{position:fixed;inset:0;background:rgba(5,7,15,0.98);backdrop-filter:blur(20px);z-index:490;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;visibility:hidden;transition:all 0.3s}
 .mobile-nav.open{opacity:1;visibility:visible}
@@ -906,6 +941,32 @@ footer{background:var(--navy2);color:var(--text3);padding:5rem 2rem 2.5rem;borde
   <span data-i18n="sticky.label">Falar com a JR</span>
 </a>
 
+<button class="chat-toggle" id="chatToggle" aria-label="Abrir assistente virtual" onclick="toggleChat()">
+  <svg class="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="chat-head-dot"></div>
+    <div>
+      <div class="chat-head-title">Assistente JR Sistemas</div>
+      <div class="chat-head-sub">Costuma responder na hora</div>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." maxlength="500" onkeydown="if(event.key==='Enter')sendChatMessage()">
+    <button id="chatSend" aria-label="Enviar" onclick="sendChatMessage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+  <a class="chat-handoff" id="chatHandoff" target="_blank" rel="noopener" href="https://wa.me/5547999506364?text=Ol%C3%A1%2C%20estava%20conversando%20com%20o%20assistente%20do%20site%20e%20gostaria%20de%20falar%20com%20um%20consultor.">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.858L.054 23.428a.5.5 0 0 0 .518.572l5.788-1.462A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.5-5.22-1.376l-.374-.22-3.884.98.997-3.76-.243-.388A9.938 9.938 0 0 1 2 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+    Falar com consultor no WhatsApp
+  </a>
+</div>
+
 <script>
 function toggleFaq(el){
   const answer=el.nextElementSibling;
@@ -916,6 +977,91 @@ function toggleFaq(el){
 }
 function openMobileNav(){document.getElementById('mobileNav').classList.add('open')}
 function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open')}
+
+const chatState = { messages: [], started: false };
+
+function toggleChat(){
+  const panel = document.getElementById('chatPanel');
+  const toggle = document.getElementById('chatToggle');
+  const willOpen = !panel.classList.contains('open');
+  panel.classList.toggle('open');
+  toggle.classList.toggle('open');
+  if(willOpen && !chatState.started){
+    chatState.started = true;
+    renderChatMessage('bot', 'Oi! 👋 Sou o assistente virtual da JR Sistemas. Posso tirar dúvidas sobre nossos sistemas de automação comercial ou te ajudar a falar com um consultor. Como posso ajudar?');
+    document.getElementById('chatInput').focus();
+  }
+}
+
+function renderChatMessage(role, text){
+  const body = document.getElementById('chatBody');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + (role === 'user' ? 'user' : 'bot');
+  div.textContent = text;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+function setChatLoading(isLoading){
+  const body = document.getElementById('chatBody');
+  const input = document.getElementById('chatInput');
+  const send = document.getElementById('chatSend');
+  input.disabled = isLoading;
+  send.disabled = isLoading;
+  let typing = document.getElementById('chatTyping');
+  if(isLoading){
+    if(!typing){
+      typing = document.createElement('div');
+      typing.id = 'chatTyping';
+      typing.className = 'chat-msg bot typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(typing);
+      body.scrollTop = body.scrollHeight;
+    }
+  } else if(typing){
+    typing.remove();
+  }
+}
+
+function updateHandoffLink(){
+  const link = document.getElementById('chatHandoff');
+  const userTexts = chatState.messages.filter(m => m.role === 'user').map(m => m.content);
+  let summary = 'Olá, estava conversando com o assistente do site e gostaria de falar com um consultor.';
+  if(userTexts.length){
+    summary += ' Resumo do que perguntei: ' + userTexts.join(' | ');
+  }
+  if(summary.length > 900) summary = summary.slice(0, 900) + '...';
+  link.href = 'https://wa.me/5547999506364?text=' + encodeURIComponent(summary);
+}
+
+async function sendChatMessage(){
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  renderChatMessage('user', text);
+  chatState.messages.push({ role: 'user', content: text });
+  updateHandoffLink();
+  setChatLoading(true);
+  try{
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ messages: chatState.messages })
+    });
+    const data = await res.json();
+    setChatLoading(false);
+    if(!res.ok || !data.reply){
+      renderChatMessage('bot', 'Desculpa, tive um problema para responder agora. Você pode falar direto com a gente pelo WhatsApp usando o botão verde aqui do lado.');
+      return;
+    }
+    renderChatMessage('bot', data.reply);
+    chatState.messages.push({ role: 'assistant', content: data.reply });
+  }catch(err){
+    setChatLoading(false);
+    renderChatMessage('bot', 'Desculpa, não consegui me conectar agora. Você pode falar direto com a gente pelo WhatsApp usando o botão verde aqui do lado.');
+  }
+}
 
 const revealEls=document.querySelectorAll('.reveal:not(.in),.reveal-scale:not(.in)');
 const observer=new IntersectionObserver(entries=>{

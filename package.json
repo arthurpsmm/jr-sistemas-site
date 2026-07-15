@@ -1,0 +1,7 @@
+{
+  "name": "jr-sistemas-site",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
